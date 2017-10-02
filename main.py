@@ -9,6 +9,7 @@ import gensim
 	Data read
 """
 model = gensim.models.Doc2Vec.load('./Evero_Books_Clusterization/models/100features_40minwords_8context_doc')
+model.random.seed(0)
 data = pd.read_pickle('./Evero_Books_Clusterization/doc2vec/id_title_lang.pkl')
 
 articles = {}

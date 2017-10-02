@@ -50,7 +50,7 @@ function generate_view(topic, index) {
     var topic_words = topic.topics.map(function (x) {
             return x;
         });
-    $("#topiclist").append('<div class="topic row" style="background-color: rgba(255,'+ index * 255 / 20 + ',0,1)" id="'+index+'"><div class="left">'+index+'</div><div class="right">'+topic_words.join(", ")+'</div></div>')
+    $("#topiclist").append('<div class="topic row" style="background-color: rgba(255,'+ ((index * 255 / 20) | 0) + ',0,1)" id="'+index+'"><div class="left">'+index+'</div><div class="right">'+topic_words.join(", ")+'</div></div>')
 
     $("#"+index).click(function () {
         loadUrls(topic.objects, topic_words)

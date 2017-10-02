@@ -8,12 +8,12 @@ import gensim
 """
 	Data read
 """
-model = gensim.models.Doc2Vec.load('./models/100features_40minwords_8context_doc')
-data = pd.read_pickle('doc2vec/id_title_lang.pkl')
+model = gensim.models.Doc2Vec.load('./Evero_Books_Clusterization/models/100features_40minwords_8context_doc')
+data = pd.read_pickle('./Evero_Books_Clusterization/doc2vec/id_title_lang.pkl')
 
 articles = {}
 
-with open("doc2vec/output.json") as json_file:
+with open("./Evero_Books_Clusterization/doc2vec/output.json") as json_file:
     articles = json.load(json_file)
 
 
@@ -21,7 +21,7 @@ with open("doc2vec/output.json") as json_file:
 	Main app
 """
 app = Flask(__name__)
-app.config.update(SERVER_NAME='127.0.0.1:5000', debug=True)
+#app.config.update(SERVER_NAME='127.0.0.1:5000', debug=True)
 
 @app.route('/')
 def index():
@@ -60,7 +60,10 @@ def look_simular_books():
 # 		result.append(top)
 # 	return jsonify(result)
 
-with app.app_context():
-    url_for('static', filename='style.css')
+#with app.app_context():
+#    url_for('static', filename='style.css')
 
 
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0:5000')

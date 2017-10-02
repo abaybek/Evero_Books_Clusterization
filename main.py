@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, render_template, url_for
+from flask import request
 import json
 import pandas as pd
 import gensim
@@ -30,12 +31,13 @@ def index():
 def get_articles_by(term):
 	return jsonify(articles)
 
-@app.route('/api/search/<string>')
-def look_simular_books(string):
-	if not isinstance(string, str):
+@app.route('/api/search/', methods=['GET'])
+def look_simular_books():
+	text = request.args.get('d')
+	text = text.strip('\n')
+	if not isinstance(text, str):
 		print('Some error')
-
-	doc = string.split()
+	doc = text.split()
 	inf_vec = model.infer_vector(doc)
 	res = model.docvecs.most_similar([inf_vec])
 	

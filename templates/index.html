@@ -1,6 +1,6 @@
 <html>
     <head>
-
+    <meta charset="utf-8">
 	<script
 	  src="https://code.jquery.com/jquery-3.2.1.min.js"
 	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
@@ -39,13 +39,43 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div id="topiclist" class="col-md-3 bar">
-                </div>
-                <div id="articlelist" class="col-md-8">
-                    <div class="row article">Please Select A Topic</div>
-                </div>
-            </div>
+        	<div class="col-md-10 col-md-offset-1">
+        <div class="card">
+        	<!-- <h2>Dynamic Tabs</h2> -->
+		    <ul class="nav nav-tabs">
+		      <li role="presentation" class="active"><a data-toggle="tab" href="#clusterization">Кластеризация</a></li>
+		      <li role="presentation"><a data-toggle="tab" href="#searchmodel">Поиск по модели</a></li>
+		    </ul>
+		    <div class="tab-content">
+		    <div id="clusterization" class="tab-pane fade in active">
+		    	<br>
+		      	<!-- <div class="row"> -->
+		            <div class="row">
+		                <div id="topiclist" class="col-md-3 bar"></div>
+		                <div id="articlelist" class="col-md-8">
+		                    <div class="row article">Please Select A Topic</div>
+		                </div>
+		            </div>
+	        	<!-- </div> -->
+		    </div>
+		    <div id="searchmodel" class="tab-pane fade">
+		      <br>
+		      <form>
+		      <div class="form-group">
+			    <label for="exampleTextarea">Введите текст или слово: </label>
+			    <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
+			  </div>
+			  <button id="btnSendText" type="submit" class="btn btn-primary">Submit</button>
+			  </form>
+		      <!-- <p> </p> -->
+		      <div class="row">
+		      	<div id="searchResultList" class="cold-md-8 bar"></div>
+		      </div>
+		    </div>
+		  </div>
         </div>
+        </div>
+        </div>
+        
     </body>
 </html>

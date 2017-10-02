@@ -1,6 +1,35 @@
 $(document).ready(function () {
+    buttonClick()
     loadBooks()
 });
+
+function buttonClick()
+{
+    $('#btnSendText').click(function(e){
+        e.preventDefault();
+        var message = $("#exampleTextarea").val();
+        // console.log(message)
+        // message = message.replace(/\W/g, ' ')
+        // console.log(message)
+        $.ajax({
+            type: "GET",
+            url: 'api/search/',
+            data: {'d' : message},
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            success: function(data){processSearchResults(data)},
+        });
+
+    });
+}
+
+function processSearchResults(data){
+
+    $("#searchResultList").empty()
+    data.forEach(function(info, index){
+        $("#searchResultList").append('<div class="row article" style="display:none">🔗 <a href="">'+info.text+'</a></div>');
+        $("#searchResultList").children().fadeIn(800)
+    })
+}
 
 function loadBooks()
 {
